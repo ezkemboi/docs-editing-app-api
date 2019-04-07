@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework import routers
+from .defaulttemplate.views import DefaultTemplatesDetails, DefaultTemplatesManipulation
+
+# Should go with options of creating routers
+# router = routers.DefaultRouter()
+# router.register('default-template', )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('default-template/', DefaultTemplatesDetails.as_view()),
+    path('default-template/<string: slug>/', DefaultTemplatesDetails.as_view()),
 ]
